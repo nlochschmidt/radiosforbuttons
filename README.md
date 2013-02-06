@@ -3,12 +3,9 @@
 The requirements are
 + [jQuery](https://developers.google.com/speed/libraries/devguide#jquery)
 + [Bootstrap](http://twitter.github.com/bootstrap/) (but it really needs only the css for buttons, if you're not already using the entire framework at your project, get only the [bootstrap-buttons.min.css](https://raw.github.com/fiatjaf/radiosforbuttons/master/bootstrap-buttons.min.css) file)
-<<<<<<< Updated upstream
 + the _jquery.radioforbuttons.js_ file, either minified or not (1.9k vs 2.9k).
-=======
-+ the jquery.radioforbuttons.js file, either minified or not (1.9k vs 2.9k).
+
 Just include them all.
->>>>>>> Stashed changes
 ## Usage
 To use you must have a set of radio-buttons (defined by `<input type="radio">`) with `name`, `value`, unique `ids` and a label (defined by `<label for="id"></label>`) for each one. All these elements must be inside a `div` (or some other block element), which will be, by its time, called on the plugin invocation. The `div` can be anywhere inside a `form`. 
 The `html` of the button will be the content of the label for each button. The radio-buttons will be preserved at the DOM, hidden, and their `checked` properties altered on each click at the resulting buttons. It is their value which will be sent to the server on any form submit.
