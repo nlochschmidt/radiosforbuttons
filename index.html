@@ -14,6 +14,24 @@
     <![endif]-->
 
     <title>Radiosforbuttons by fiatjaf</title>
+
+		<link rel="stylesheet" href="bootstrap-buttons.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+		<script src="jquery.radiosforbuttons.min.js"></script>
+		<script>
+			$( function () { $('#show').radiosforbuttons(); } )
+		</script>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38297900-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
   </head>
 
   <body>
@@ -29,6 +47,22 @@
       <div class="inner clearfix">
         <section id="main-content">
           <h1>radiosforbuttons</h1>
+this
+<form>
+  <div id="noshow">
+    <input type="radio" name="which" value="first" id="nofirst"><label for="nofirst">first option</label>
+    <input type="radio" name="which" value="second" id="nosecond"><label for="nosecond">second option</label>
+    <input type="radio" name="which" value="last" id="nolast"><label for="nolast">last option</label>
+  </div>
+</form>
+becomes this
+<form>
+  <div id="show">
+    <input type="radio" name="which" value="first" id="first"><label for="first">first option</label>
+    <input type="radio" name="which" value="second" id="second"><label for="second">second option</label>
+    <input type="radio" name="which" value="last" id="last"><label for="last">last option</label>
+  </div>
+</form>
 
 <h2>Requirements</h2>
 
@@ -38,7 +72,7 @@
 <li><a href="https://developers.google.com/speed/libraries/devguide#jquery">jQuery</a></li>
 <li>
 <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> (but it really needs only the css for buttons, if you're not already using the entire framework at your project, get only the <a href="https://raw.github.com/fiatjaf/radiosforbuttons/master/bootstrap-buttons.min.css">bootstrap-buttons.min.css</a> file)</li>
-<li>the <em>jquery.radioforbuttons.js</em> file, either minified or not (1.9k vs 2.9k).</li>
+<li>the <em>jquery.radioforbuttons.js</em> file, either <a href="https://raw.github.com/fiatjaf/radiosforbuttons/master/jquery.radiosforbuttons.min.js">minified</a> or <a href="https://raw.github.com/fiatjaf/radiosforbuttons/master/jquery.radiosforbuttons.js">not</a> (1.9k vs 2.9k).</li>
 </ul><p>Just include them all.</p>
 
 <h2>Usage</h2>
@@ -107,13 +141,53 @@ $('#radios_div').radiosforbuttons({ buttonstyle: 'btn-inverse' })
 
 <pre><code>$('#radios_div').radiosforbuttons({ margin: 4 })
 </code></pre>
-
 <p>It also works for vertically stacked buttons.</p>
+<h2>Reference</h2>
+<table>
+    <tr>
+        <th>option</th>
+        <th>type</th>
+        <th>default</th>
+    </tr>
+    <tr>
+        <td>group</td>
+        <td>boolean</td>
+        <td>true</td>
+    </tr>
+    <tr>
+        <td>color</td>
+        <td>string</td>
+        <td>white</td>
+    </tr>
+    <tr>
+        <td>buttonstyle</td>
+        <td>string</td>
+        <td>''</td>
+    </tr>
+    <tr>
+        <td>vertical</td>
+        <td>boolean</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>autowidth</td>
+        <td>boolean</td>
+        <td>true</td>
+    </tr>
+    <tr>
+        <td>margin</td>
+        <td>integer</td>
+        <td>0</td>
+    </tr>
+</table>
 
-<h2><a href="http://htmlpreview.github.com/?https://github.com/fiatjaf/radiosforbuttons/blob/master/demo.html">Demo</a></h2>
         </section>
 
         <aside id="sidebar">
+          <a href="demo.html" class="button">
+            <small>View</small>
+            demo page
+          </a>
           <a href="https://github.com/fiatjaf/radiosforbuttons/zipball/master" class="button">
             <small>Download</small>
             .zip file
