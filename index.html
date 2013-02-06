@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Radiosforbuttons by fiatjaf</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Radiosforbuttons</h1>
+        <h2>jQuery plugin for transforming radio-buttons in true beautiful Bootstrap buttons.</h2>
+        <a href="https://github.com/fiatjaf/radiosforbuttons" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>radiosforbuttons</h1>
+
+<h2>Requirements</h2>
+
+<p>The requirements are</p>
+
+<ul>
+<li><a href="https://developers.google.com/speed/libraries/devguide#jquery">jQuery</a></li>
+<li>
+<a href="http://twitter.github.com/bootstrap/">Bootstrap</a> (but it really needs only the css for buttons, if you're not already using the entire framework at your project, get only the <a href="https://raw.github.com/fiatjaf/radiosforbuttons/master/bootstrap-buttons.min.css">bootstrap-buttons.min.css</a> file)</li>
+<li>the <em>jquery.radioforbuttons.js</em> file, either minified or not (1.9k vs 2.9k).</li>
+</ul><p>Just include them all.</p>
+
+<h2>Usage</h2>
+
+<p>To use you must have a set of radio-buttons (defined by <code>&lt;input type="radio"&gt;</code>) with <code>name</code>, <code>value</code>, unique <code>ids</code> and a label (defined by <code>&lt;label for="id"&gt;&lt;/label&gt;</code>) for each one. All these elements must be inside a <code>div</code> (or some other block element), which will be, by its time, called on the plugin invocation. The <code>div</code> can be anywhere inside a <code>form</code>. 
+The <code>html</code> of the button will be the content of the label for each button. The radio-buttons will be preserved at the DOM, hidden, and their <code>checked</code> properties altered on each click at the resulting buttons. It is their value which will be sent to the server on any form submit.
+Simple example:</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;link rel="stylesheet" href="bootstrap-buttons.min.css"&gt;
+&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script src="jquery.radioforbuttons.js"&gt;&lt;/script&gt;
+
+&lt;form&gt;
+  &lt;div class="default"&gt;
+    &lt;input type="radio" name="which" value="this" id="this"&gt;&lt;label for="this"&gt;this&lt;/label&gt;
+    &lt;input type="radio" name="which" value="that" id="that"&gt;&lt;label for="that"&gt;that&lt;/label&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+  $( '.default' ).radiosforbuttons()
+&lt;/script&gt;
+</code></pre>
+
+<h3>Group</h3>
+
+<p>Change the <code>group</code> option from the default <code>true</code> to <code>false</code> if you don't want the buttons to be in bootstrap button group (as in the <code>.btn-group</code> class).</p>
+
+<h3>Vertical</h3>
+
+<p>If you want stacked options, just mark option <code>vertical</code> as true:</p>
+
+<pre><code>$('#radios_div').radiosforbuttons({ vertical: true })
+</code></pre>
+
+<p>The widths of the vertically stacked buttons will be equalized unless you set <code>autowidth</code> to <code>false</code>.</p>
+
+<h3>Colors</h3>
+
+<p>As you know, <a href="http://twitter.github.com/bootstrap/base-css.html#buttons">bootstrap buttons</a> have colors. You can color the radio buttons in two ways:</p>
+
+<h4>Calling <code>radiosforbuttons</code> with the color or buttonstyle options setted</h4>
+
+<p>Just set the option you want to use with the value of the color you will want for all the buttons. Both the <a href="http://twitter.github.com/bootstrap/base-css.html#buttons">bootstrap button classes names</a> or simply a color name:</p>
+
+<pre><code>$('#radios_div').radiosforbuttons({ color: 'black' })
+$('#radios_div').radiosforbuttons({ buttonstyle: 'btn-inverse' })
+</code></pre>
+
+<h4>Using <code>data</code> properties on the <code>input</code> element</h4>
+
+<p>You can assign color to buttons using the <code>data</code> properties <code>button-color</code> or <code>button-bootstrap-class</code>, the values are the same for the example above:</p>
+
+<pre><code>&lt;div id="directions"&gt;
+    &lt;input type="radio" name="direction" data-color="blue" id="north" value="north" &gt;&lt;label for="north"&gt;&lt;/label&gt;
+    &lt;input type="radio" name="direction" data-button-bootstrap-class="btn-danger" id="south" value="south" &gt;&lt;label for="south"&gt;&lt;/label&gt;
+    &lt;input type="radio" name="direction" data-color="green" id="east" value="east" &gt;&lt;label for="east"&gt;&lt;/label&gt;
+    &lt;input type="radio" name="direction" data-button-bootstrap-class="warning" id="west" value="west" &gt;&lt;label for="west"&gt;&lt;/label&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h3>Margin</h3>
+
+<p>Because of a difference of 2px (I think) on the button margins on Chrome and Firefox which bootstrap apparently doesn't cover, I added this property so you could make the buttons of the group nearer or farther. However, due to other improvement isn't necessary to change it, unless you want to make your buttons farther, then it's a cool thing. Just do:</p>
+
+<pre><code>$('#radios_div').radiosforbuttons({ margin: 4 })
+</code></pre>
+
+<p>It also works for vertically stacked buttons.</p>
+
+<h2><a href="http://htmlpreview.github.com/?https://github.com/fiatjaf/radiosforbuttons/blob/master/demo.html">Demo</a></h2>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/fiatjaf/radiosforbuttons/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/fiatjaf/radiosforbuttons/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/fiatjaf/radiosforbuttons"></a> is maintained by <a href="https://github.com/fiatjaf">fiatjaf</a>.</p>
+
+          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
