@@ -78,7 +78,7 @@
 
     $( '.radiosforbuttons-'+name ).click( function () {
       $( '.radiosforbuttons-'+name+' input:radio[name="'+name+'"]' ).prop('checked', false);
-      $( '#'+$(this).data('id') ).prop('checked', true);
+      $( '#'+$(this).data('id') ).prop('checked', true).trigger("change");
       $( '.radiosforbuttons-'+name ).removeClass('active');
       $( this ).addClass('active');
       return false;
